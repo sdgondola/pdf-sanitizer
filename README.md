@@ -6,6 +6,14 @@ Get rid of unwanted JavaScript and attachments in a PDF file
 [PyPDF 4.x](https://pypi.org/project/pypdf/)
 
 ### How to run
+
+#### Install with pip/pipx
+```shell
+$ pipx install .
+$ pdf-sanitizer inputfile.pdf outputfile.pdf
+```
+
+#### Custom virtualenv
 1. Install PyPDF
 ```shell
 $ pip install -r requirements.txt

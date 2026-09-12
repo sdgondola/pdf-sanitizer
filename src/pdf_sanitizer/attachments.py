@@ -1,4 +1,5 @@
 from pypdf import PdfReader, PdfWriter
+from pypdf.generic import *
 
 
 def extract_attachments(reader: PdfReader) -> list:
@@ -27,16 +28,16 @@ def add_attachments(writer: PdfWriter, attachments: list) -> PdfWriter:
     embedded_files_dict = DictionaryObject()
     embedded_files_array = ArrayObject()
     for file_name, file_data in attachments:
-        file_stream = pypdf.generic.EncodedStreamObject()
+        file_stream = EncodedStreamObject()
         file_stream.set_data(file_data)
         file_dict = DictionaryObject()
         file_dict.update({
-            NameObject('/F'): pypdf.generic.create_string_object(file_name),
+            NameObject('/F'): create_string_object(file_name),
             NameObject('/EF'): DictionaryObject({
                 NameObject('/F'): file_stream
             })
         })
-        embedded_files_array.append(pypdf.generic.create_string_object(file_name))
+        embedded_files_array.append(create_string_object(file_name))
         embedded_files_array.append(file_dict)
     embedded_files_dict.update({
         NameObject('/Names'): embedded_files_array

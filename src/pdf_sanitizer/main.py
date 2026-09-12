@@ -5,8 +5,8 @@ from os.path import isfile
 
 from pypdf import PdfReader, PdfWriter
 
-from attachments import attachments_preview, attachments_restore
-from js import js_sanitize
+from .attachments import attachments_preview, attachments_restore
+from .js import js_sanitize
 
 
 def sanitize_to(src: str, dst: str, files: bool=False):
